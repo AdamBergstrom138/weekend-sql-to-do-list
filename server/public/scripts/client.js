@@ -20,10 +20,10 @@ function fetchAndRenderToDo(){
         for(let todo of response){
           $('#toDoTable').append(`
           <tr ${conditionallyApplyStatus(todo)}data-id=${todo.id}>
-            <td>${todo.task}</td>
-            <td><button type="button" class="changeButton">${todo.complete}</button></td>
+            <td class="task">${todo.task}</td>
+            <td>${conditionallyApplyChangeButton(todo)}</td>
             <td>${todo.edit}</td>
-            <td><button type="button" class="deleteButton">Delete</button></td>
+            <td><button type="button" class="deleteButton">🥫</button></td>
           </tr>
           `);
         // if (todo.complete === 'N'){
@@ -37,6 +37,8 @@ function fetchAndRenderToDo(){
         console.log('error in GET', error);
       });
 }
+// <td><button type="button" class="changeButton">${todo.complete}</button></td>
+
 //<li ${conditionallyApplyVampireStylez(creature)} data-id=${creature.id}>
 // function conditionallyApplyVampireStylez(creature) {
 //     if (creature.type === 'Vampire') {
@@ -46,6 +48,19 @@ function fetchAndRenderToDo(){
 //       return ''
 //     }
 //   }
+
+function conditionallyApplyChangeButton(todo) {
+    if (todo.complete === 'N'){
+        return `
+        <button type="button" class="changeButton">❌</button>
+        `
+    } else {
+        return `
+        <button type="button" class="changeButton">✔️</button>
+        `
+    }
+}
+
 function conditionallyApplyStatus(todo) {
     if (todo.complete === 'Y'){
         return 'class="status"'

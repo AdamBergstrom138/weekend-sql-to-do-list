@@ -1,8 +1,14 @@
- tr, table {
-    border: 1px solid;
+ th, tr, table {
+    border: 1px solid black;
     border-collapse: collapse;
     background-color: rgb(215, 166, 43);
     margin: auto;
+    padding: 12px;
+    text-align: center;
+}
+.task {
+    text-align: left;
+    padding: 6px;
 }
 
 body {
@@ -20,6 +26,14 @@ h2 {
     text-align: center;
 }
 .status {
-    color: rgb(23, 1, 218);
+    color: rgb(110, 255, 19);
     background-color: blueviolet;
+    font-size: 24px;
+}
+.deleteButton {
+    font-size: 24px;
+    background-color: black;
+}
+td {
+    border: 1px solid black;
 }
