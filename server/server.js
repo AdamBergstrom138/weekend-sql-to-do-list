@@ -10,7 +10,8 @@ const app = express();
 
 // Create a variable whose value is the port address.
 const PORT = 5000;
-
+//
+const todoRouter = require('./routes/todo.router')
 // Teach our server how to read incoming data (req.body):
 app.use(bodyParser.urlencoded({ extended: true }));
 // Teach our server how to read incoming JSON data (req.body *from Postman*):
@@ -20,7 +21,7 @@ app.use(bodyParser.json())
 app.use(express.static('server/public'));
 
 // ROUTES
-app.use('/', k) //update this to correct DB
+app.use('/todo', todoRouter) //update this to correct DB
 
 
 // *** Add Code Here ***

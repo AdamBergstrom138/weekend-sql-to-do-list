@@ -6,11 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js"></script>
     <script src="scripts/client.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 
     <title>Document</title>
 </head>
 <body>
-    <header>To Do List</header>
+    <header>
+        <h1>To Do List</h1>
+    </header>
+
+    <section id="addToDo">
+        <h2>Add To Do</h2>
+        <input type="text" id="toDoIn" value="" placeholder="Name">
+        <button type="button" id="submitButton">Submit</button>
+    </section>
+    <section>
+        <h2>Test</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>To Do</th>
+                    <th>Complete</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="toDoTable">
+            </tbody>
+        </table>
+    </section>
 </body>
 </html>
