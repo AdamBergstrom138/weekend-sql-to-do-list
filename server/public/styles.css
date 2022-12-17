@@ -1,4 +1,4 @@
-td, tr, table {
+ tr, table {
     border: 1px solid;
     border-collapse: collapse;
     background-color: rgb(215, 166, 43);
@@ -18,4 +18,8 @@ h2 {
 
 #addToDo {
     text-align: center;
+}
+.status {
+    color: rgb(23, 1, 218);
+    background-color: blueviolet;
 }

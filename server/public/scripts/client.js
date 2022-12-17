@@ -19,9 +19,9 @@ function fetchAndRenderToDo(){
         console.log(response);
         for(let todo of response){
           $('#toDoTable').append(`
-          <tr data-id=${todo.id}>
+          <tr ${conditionallyApplyStatus(todo)}data-id=${todo.id}>
             <td>${todo.task}</td>
-            <td><button type="button" id=".ready${todo.id}" class="changeButton">${todo.complete}</button></td>
+            <td><button type="button" class="changeButton">${todo.complete}</button></td>
             <td>${todo.edit}</td>
             <td><button type="button" class="deleteButton">Delete</button></td>
           </tr>
@@ -37,7 +37,22 @@ function fetchAndRenderToDo(){
         console.log('error in GET', error);
       });
 }
-
+//<li ${conditionallyApplyVampireStylez(creature)} data-id=${creature.id}>
+// function conditionallyApplyVampireStylez(creature) {
+//     if (creature.type === 'Vampire') {
+//       return 'class="bloood"'
+//     }
+//     else {
+//       return ''
+//     }
+//   }
+function conditionallyApplyStatus(todo) {
+    if (todo.complete === 'Y'){
+        return 'class="status"'
+    } else {
+        return ''
+    }
+}
 
 function submit(){
     console.log('in submit');
