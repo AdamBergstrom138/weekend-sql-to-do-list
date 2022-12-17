@@ -38,10 +38,42 @@ todoRouter.post('/', (req, res) => {
             console.log('Error in POST /todo', dbErr);
         })
 })
-
-
 // // DELETE
+todoRouter.delete('/:id', (req, res) => {
+    console.log(req.params);
+    let idToDelete = req.params.id;
+    let sqlQuery = `
+    DELETE FROM "todo"
+    WHERE "id"=$1;
+    `
+    let sqlValues = [idToDelete];
+    pool.query(sqlQuery, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(200);
+        })
+        .catch((dbErr) => {
+            console.log('Error in Delete:', dbErr);
+        })
+});
 
+
+// koalaRouter.delete('/:id', (req, res) => {
+//     console.log(req.params);
+//     let idToDelete = req.params.id;
+//     let sqlQuery = `
+//     DELETE FROM "koala"
+//     WHERE "id"=$1;
+//     `
+//     let sqlValues = [idToDelete];
+//     pool.query(sqlQuery, sqlValues)
+//       .then((dbRes) => {
+//         res.sendStatus(200);
+//       })
+//       .catch((dbErr) => {
+//         console.log('broke in DELETE /koala/:id', dbErr);
+//         res.sendStatus(500);
+//       })
+//   });
 // // PUT
 
 // //

@@ -3,7 +3,8 @@ $(document).ready(onReady);
 function onReady(){
     console.log('JQ');
     fetchAndRenderToDo();
-    $( '#submitButton' ).on( 'click', submit)
+    $('body').on('click', '#submitButton', submit);
+    $('body').on('click', '.deleteButton', deleteToDo);
 }
 
 function fetchAndRenderToDo(){
@@ -50,3 +51,19 @@ function submit(){
         console.log('Error in submit:', error);
     });
 }
+
+function deleteToDo(){
+    console.log('in delete');
+    let idToDelete = $(this).parent().parent().data().id;
+    console.log(idToDelete);
+    $.ajax({
+      method: 'DELETE',
+      url: `/todo/${idToDelete}`
+    }).then((response) => {
+        fetchAndRenderToDo();
+    }).catch((error) => {
+      console.log('Error in deleteToDo:', error);
+    })
+}
+
+
