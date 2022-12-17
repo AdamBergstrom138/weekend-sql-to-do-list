@@ -21,10 +21,28 @@ todoRouter.get('/', (req, res) => {
       });
   });
 // POST
+todoRouter.post('/', (req, res) => {
+    console.log('POST /todo');
+    console.log(req.body);
+    let sqlQuery = `
+    INSERT INTO "todo"
+    ("task", "complete")
+    VALUES
+    ($1, $2);
+    `
+    let sqlValues = [req.body.task, req.body.complete];
+    pool.query(sqlQuery, sqlValues)
+        .then((dbRes) => {
+            res.sendStatus(201);
+        }).catch((dbErr) => {
+            console.log('Error in POST /todo', dbErr);
+        })
+})
 
-// DELETE
 
-// PUT
+// // DELETE
 
-//
-module.exports = todoRouter;
+// // PUT
+
+// //
+ module.exports = todoRouter;

@@ -3,6 +3,7 @@ $(document).ready(onReady);
 function onReady(){
     console.log('JQ');
     fetchAndRenderToDo();
+    $( '#submitButton' ).on( 'click', submit)
 }
 
 function fetchAndRenderToDo(){
@@ -17,7 +18,7 @@ function fetchAndRenderToDo(){
           $('#toDoTable').append(`
           <tr data-id=${todo.id}>
             <td>${todo.task}</td>
-            <td class="ready${todo.complete}">X</td>
+            <td class="ready${todo.id}">${todo.complete}</td>
             <td><button type="button" class="deleteButton">Delete</button></td>
           </tr>
           `);
@@ -31,3 +32,21 @@ function fetchAndRenderToDo(){
       });
 }
 
+function submit(){
+    console.log('in submit');
+    letNewTask = $('#toDoIn').val();
+    letNewComplete = 'N';
+    let taskToSend = {
+        task: letNewTask,
+        complete: letNewComplete
+    };
+    $.ajax({
+        method: 'POST',
+        url: '/todo',
+        data: taskToSend
+    }).then((response) => {
+        fetchAndRenderToDo();
+    }).catch((error) => {
+        console.log('Error in submit:', error);
+    });
+}

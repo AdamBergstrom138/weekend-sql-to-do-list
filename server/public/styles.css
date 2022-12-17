@@ -1,0 +1,21 @@
+td, tr, table {
+    border: 1px solid;
+    border-collapse: collapse;
+    background-color: rgb(215, 166, 43);
+    margin: auto;
+}
+
+body {
+    background-color: rgb(106, 56, 24);
+    margin: 0px;
+}
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+
+#addToDo {
+    text-align: center;
+}
