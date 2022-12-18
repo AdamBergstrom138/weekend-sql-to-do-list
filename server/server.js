@@ -23,10 +23,6 @@ app.use(express.static('server/public'));
 // ROUTES
 app.use('/todo', todoRouter) //update this to correct DB
 
-
-// *** Add Code Here ***
-
-
 // Start the server:
 app.listen(PORT, () => {
     console.log(`hey. listen. http://localhost:${PORT}`)

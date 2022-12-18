@@ -2,8 +2,8 @@ const express = require('express');
 const todoRouter = express.Router();
 
 // DB CONNECTION
-const pool = require('../modules/pool.js'); //works?
-// GET
+const pool = require('../modules/pool.js'); 
+// // GET
 todoRouter.get('/', (req, res) => {
     console.log('in get');
     let sqlQuery = `
@@ -12,7 +12,6 @@ todoRouter.get('/', (req, res) => {
     `;
     pool.query(sqlQuery)
       .then((dbRes) => {
-      // Sends back the array of koala objects objects:
         res.send(dbRes.rows);
       })
       .catch((dbErr) => {
@@ -20,7 +19,8 @@ todoRouter.get('/', (req, res) => {
         res.sendStatus(500);
       });
   });
-// POST
+
+// // POST
 todoRouter.post('/', (req, res) => {
     console.log('POST /todo');
     console.log(req.body);
@@ -57,7 +57,7 @@ todoRouter.delete('/:id', (req, res) => {
 });
 
 // // PUT
-
+// put route for complete
 todoRouter.put('/:id', (req, res) => {
     console.log('req.params:', req.params);
     console.log('req.body:', req.body);
@@ -79,7 +79,29 @@ todoRouter.put('/:id', (req, res) => {
         console.log('Error broke in PUT', dbErr);
         res.sendStatus(500);
       })
+  });
+  // put route for edit
+  todoRouter.put('/edit/:id', (req, res) => {
+    console.log('req.params:', req.params);
+    console.log('req.body:', req.body);
+    let idToUpdate = req.params.id;
+    let newEdit = req.body.edit;
+  
+    let sqlQuery = `
+      UPDATE "todo"
+          SET "edit"=$1
+          WHERE "id"=$2;
+    ` 
+    let sqlValues = [newEdit, idToUpdate];
+  
+    pool.query(sqlQuery, sqlValues)
+      .then((dbRes) => {
+        res.sendStatus(200);
+      })
+      .catch((dbErr) => {
+        console.log('Error broke in Edit PUT', dbErr);
+        res.sendStatus(500);
+      })
   })
 
-// //
  module.exports = todoRouter;
