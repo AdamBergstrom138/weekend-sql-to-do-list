@@ -1,12 +1,13 @@
 console.log( 'js' );
+
 $(document).ready(onReady);
 function onReady(){
     console.log('JQ');
     fetchAndRenderToDo();
     $('body').on('click', '#submitButton', submit); // submits to do from input 
     $('body').on('click', '.deleteButton', deleteToDo); // deletes to do from server
-    $('body').on('click', '.changeButton', changeCompleteStatus); // changes complete to 'Y'
-    $('body').on('click', '.changeButtonToNo', changeCompleteStatusNo); // changes complete to 'Y'
+    $('body').on('click', '#changeButton', changeCompleteStatus); // changes complete to 'Y'
+    $('body').on('click', '#changeButtonToNo', changeCompleteStatusNo); // changes complete to 'Y'
     $('body').on('click', '.editButton', editSubmit); // currently not working as intended
 }
 // fetchAndRenderToDo will fetch everything from todo table (database) and render
@@ -23,7 +24,7 @@ function fetchAndRenderToDo(){
           <tr ${conditionallyApplyStatus(todo)}data-id=${todo.id}>
             <td class="task">${todo.task}</td>
             <td>${conditionallyApplyChangeButton(todo)}</td>
-            <td><button type="button" class="deleteButton">🥫</button></td>
+            <td><button type="button" class="nes-btn is-error" class="deleteButton"><img src="trash_fire.png" alt="trash"></button></td>
           </tr>
           `);
         }
@@ -51,11 +52,11 @@ function conditionallyApplyEdit(todo) {
 function conditionallyApplyChangeButton(todo) {
     if (todo.complete === 'N'){
         return `
-        <button type="button" class="changeButton">❌</button>
+        <button type="button"  class="nes-btn is-warning" id="changeButton" >❌</button>
         `
     } else {
         return `
-        <button type="button" class="changeButtonToNo">✔️</button>
+        <button type="button" class="nes-btn is-success" id="changeButtonToNo">✔️</button>
         `
     }
 }

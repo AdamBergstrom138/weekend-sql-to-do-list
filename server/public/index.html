@@ -6,25 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="vendors/jquery.js"></script>
     <script src="scripts/client.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Press Start 2P' rel='stylesheet'>
+    <!-- <link rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css"> -->
+    <!-- ^^^ wasn't able to get this working ^^^ -->
+    <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css">
 
     <title>Document</title>
 </head>
 <body>
-    <header>
+    <header class="nes-container">
         <h1>To Do List</h1>
     </header>
 
     <section id="addToDo">
-        <h2>Add To Do</h2>
-        <input type="text" id="toDoIn" value="" placeholder="Add Something To Do">
-        <button type="button" id="submitButton">Submit</button>
+        <!-- <h2>Add To Do</h2> -->
+        <input type="text" id="toDoIn" class="nes-container" value="" placeholder="Add Something To Do">
+        <button type="button" id="submitButton" class="nes-btn">Submit</button>
         <!-- <input type="text" id="editIn" value="" placeholder="edit">
         <button type="button" id="editButton">Submit</button> -->
     </section>
-    <section>
-        <h2>Test</h2>
-        <table>
+    <section >
+        <!-- <h2>Test</h2> -->
+        <table class="nes-container">
             <thead>
                 <tr>
                     <th>To Do</th>

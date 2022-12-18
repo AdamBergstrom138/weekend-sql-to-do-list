@@ -10,10 +10,18 @@
     text-align: left;
     padding: 6px;
 }
-
+thead, th{
+    background-color: rgb(170, 131, 34);
+    border: 3px solid black;
+}
 body {
     background-color: rgb(106, 56, 24);
     margin: 0px;
+}
+header {
+    background-color: rgb(220, 76, 63);
+    margin: 50px;
+    padding: 12px;
 }
 h1 {
     text-align: center;
@@ -24,10 +32,12 @@ h2 {
 
 #addToDo {
     text-align: center;
+    margin: auto;
+    padding: 24px;
 }
 .status {
     color: rgb(110, 255, 19);
-    background-color: blueviolet;
+    background-color: rgb(72, 137, 29);
     font-size: 24px;
 }
 .deleteButton {
